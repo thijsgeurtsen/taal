@@ -148,9 +148,11 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="app">
+
   <div id="startScherm">
     <h1>Taal oefenen</h1>
     <p class="uitleg">Luister naar het woord. Kies het goede plaatje.</p>
@@ -176,6 +178,7 @@
       <button class="kleineKnop" onclick="resetScore()">Score wissen</button>
     </div>
   </div>
+
 </div>
 
 <script>
@@ -185,11 +188,11 @@ const woorden = [
   { woord: "gum", afbeelding: "images/gum.jpg" },
   { woord: "jas", afbeelding: "images/jas.jpg" },
   { woord: "tas", afbeelding: "images/tas.jpg" },
-  { woord: "stoel", afbeelding: "images/stoel.jpg" },
+  { woord: "kruk", afbeelding: "images/kruk.jpg" },
+  { woord: "tafel", afbeelding: "images/tafel.jpg" },
   { woord: "deur", afbeelding: "images/deur.jpg" },
-  { woord: "bal", afbeelding: "images/bal.jpg" },
-  { woord: "kat", afbeelding: "images/kat.jpg" },
-  { woord: "vis", afbeelding: "images/vis.jpg" }
+  { woord: "raam", afbeelding: "images/raam.jpg" },
+  { woord: "bal", afbeelding: "images/bal.jpg" }
 ];
 
 let huidigWoord = null;
@@ -250,14 +253,18 @@ function controleer(knop, gekozen) {
   if (gekozen.woord === huidigWoord.woord) {
     goed++;
     magAntwoorden = false;
+
     knop.classList.add("goed");
     document.getElementById("feedback").textContent = "Goed!";
+
     spreekTekst("goed");
     updateScore();
+
     setTimeout(nieuweVraag, 1200);
   } else {
     knop.classList.add("fout");
     document.getElementById("feedback").textContent = "Probeer nog een keer";
+
     spreekTekst("probeer nog een keer");
     updateScore();
   }
