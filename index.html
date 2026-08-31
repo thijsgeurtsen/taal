@@ -1,176 +1,165 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taal oefenen</title>
 
-<title>Taal oefenen</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-  * {
-    box-sizing: border-box;
-  }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, Arial, sans-serif;
+      background: linear-gradient(135deg, #eef3ff, #f9fbff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
 
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: system-ui, Arial, sans-serif;
-    background: linear-gradient(135deg, #eef3ff, #f9fbff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px;
-  }
+    .app {
+      width: 100%;
+      max-width: 520px;
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      text-align: center;
+    }
 
-  .app {
-    width: 100%;
-    max-width: 480px;
-    background: white;
-    border-radius: 28px;
-    padding: 24px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
-    text-align: center;
-  }
+    h1 {
+      margin-top: 0;
+      font-size: 30px;
+    }
 
-  h1 {
-    margin-top: 0;
-    font-size: 30px;
-  }
+    .uitleg {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 16px;
+    }
 
-  .uitleg {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 16px;
-  }
+    .woordkaart {
+      background: #f1f4ff;
+      border-radius: 24px;
+      padding: 24px;
+      margin: 16px 0;
+    }
 
-  .menu {
-    display: grid;
-    gap: 12px;
-    margin-top: 20px;
-  }
+    .woord {
+      font-size: 44px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
 
-  .menu button,
-  .start,
-  .kleineKnop,
-  .speaker {
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-  }
+    .speaker,
+    .kleineKnop,
+    .startKnop {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
 
-  .menu button {
-    font-size: 22px;
-    padding: 18px;
-    border-radius: 20px;
-    background: #e5ecff;
-  }
+    .speaker {
+      font-size: 22px;
+      padding: 14px 22px;
+      border-radius: 18px;
+      background: #dde6ff;
+    }
 
-  .menu button:hover {
-    background: #d8e2ff;
-  }
+    .startKnop {
+      font-size: 24px;
+      padding: 18px;
+      border-radius: 20px;
+      background: #e5ecff;
+      width: 100%;
+    }
 
-  .woordkaart {
-    background: #f1f4ff;
-    border-radius: 24px;
-    padding: 24px;
-    margin: 16px 0;
-  }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
 
-  .woord {
-    font-size: 44px;
-    font-weight: 800;
-    margin-bottom: 16px;
-  }
+    .plaatjeKnop {
+      border: none;
+      border-radius: 22px;
+      background: #f4f4f4;
+      cursor: pointer;
+      min-height: 170px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .speaker {
-    font-size: 22px;
-    padding: 14px 22px;
-    border-radius: 18px;
-    background: #dde6ff;
-  }
+    .plaatjeKnop:hover {
+      background: #ececec;
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-top: 20px;
-  }
+    .plaatjeKnop img {
+      max-width: 100%;
+      max-height: 140px;
+      border-radius: 14px;
+      object-fit: contain;
+    }
 
-  .plaatjeKnop {
-    font-size: 64px;
-    padding: 22px 8px;
-    border: none;
-    border-radius: 22px;
-    background: #f4f4f4;
-    cursor: pointer;
-    min-height: 125px;
-  }
+    .goed {
+      background: #b9f6c3 !important;
+    }
 
-  .plaatjeKnop:hover {
-    background: #ececec;
-  }
+    .fout {
+      background: #ffc4c4 !important;
+    }
 
-  .goed {
-    background: #b9f6c3 !important;
-  }
+    .feedback {
+      min-height: 38px;
+      font-size: 26px;
+      font-weight: bold;
+      margin-top: 18px;
+    }
 
-  .fout {
-    background: #ffc4c4 !important;
-  }
+    .score {
+      margin-top: 10px;
+      color: #666;
+      font-size: 17px;
+    }
 
-  .feedback {
-    min-height: 38px;
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 18px;
-  }
+    .onderin {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
 
-  .score {
-    margin-top: 10px;
-    color: #666;
-    font-size: 17px;
-  }
+    .kleineKnop {
+      flex: 1;
+      padding: 13px;
+      border-radius: 16px;
+      background: #eef0f5;
+      font-size: 16px;
+    }
 
-  .onderin {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .kleineKnop {
-    flex: 1;
-    padding: 13px;
-    border-radius: 16px;
-    background: #eef0f5;
-    font-size: 16px;
-  }
-
-  .verborgen {
-    display: none;
-  }
-</style>
+    .verborgen {
+      display: none;
+    }
+  </style>
 </head>
-
 <body>
 
 <div class="app">
-
-  <div id="menuScherm">
+  <div id="startScherm">
     <h1>Taal oefenen</h1>
-    <p class="uitleg">Kies een thema.</p>
-
-    <div class="menu">
-      <button onclick="startThema('school')">🎒 School</button>
-      <button onclick="startThema('dieren')">🐱 Dieren</button>
-      <button onclick="startThema('eten')">🍎 Eten</button>
-      <button onclick="startThema('klas')">🏫 Klas</button>
-      <button onclick="startThema('basis')">⭐ Basiswoorden</button>
-    </div>
+    <p class="uitleg">Luister naar het woord. Kies het goede plaatje.</p>
+    <button class="startKnop" onclick="startApp()">Start</button>
   </div>
 
   <div id="spelScherm" class="verborgen">
-    <h1 id="themaTitel">Woorden oefenen</h1>
-    <p class="uitleg">Luister naar het woord. Kies het goede plaatje.</p>
+    <h1>Woorden oefenen</h1>
+    <p class="uitleg">Kies het goede plaatje.</p>
 
     <div class="woordkaart">
       <div class="woord" id="woord">boek</div>
@@ -184,103 +173,34 @@
 
     <div class="onderin">
       <button class="kleineKnop" onclick="nieuweVraag()">Nieuwe vraag</button>
-      <button class="kleineKnop" onclick="terugNaarMenu()">Menu</button>
+      <button class="kleineKnop" onclick="resetScore()">Score wissen</button>
     </div>
   </div>
-
 </div>
 
 <script>
-const themas = {
-  school: [
-    { woord: "potlood", plaatje: "✏️" },
-    { woord: "gum", plaatje: "🧽" },
-    { woord: "boek", plaatje: "📘" },
-    { woord: "schrift", plaatje: "📓" },
-    { woord: "schaar", plaatje: "✂️" },
-    { woord: "lijm", plaatje: "🧴" },
-    { woord: "tas", plaatje: "🎒" },
-    { woord: "jas", plaatje: "🧥" }
-  ],
+const woorden = [
+  { woord: "boek", afbeelding: "images/boek.jpg" },
+  { woord: "pen", afbeelding: "images/pen.jpg" },
+  { woord: "gum", afbeelding: "images/gum.jpg" },
+  { woord: "jas", afbeelding: "images/jas.jpg" },
+  { woord: "tas", afbeelding: "images/tas.jpg" },
+  { woord: "stoel", afbeelding: "images/stoel.jpg" },
+  { woord: "deur", afbeelding: "images/deur.jpg" },
+  { woord: "bal", afbeelding: "images/bal.jpg" },
+  { woord: "kat", afbeelding: "images/kat.jpg" },
+  { woord: "vis", afbeelding: "images/vis.jpg" }
+];
 
-  dieren: [
-    { woord: "kat", plaatje: "🐱" },
-    { woord: "hond", plaatje: "🐶" },
-    { woord: "vis", plaatje: "🐟" },
-    { woord: "muis", plaatje: "🐭" },
-    { woord: "paard", plaatje: "🐴" },
-    { woord: "koe", plaatje: "🐮" },
-    { woord: "vogel", plaatje: "🐦" },
-    { woord: "kip", plaatje: "🐔" }
-  ],
-
-  eten: [
-    { woord: "appel", plaatje: "🍎" },
-    { woord: "banaan", plaatje: "🍌" },
-    { woord: "brood", plaatje: "🍞" },
-    { woord: "water", plaatje: "💧" },
-    { woord: "melk", plaatje: "🥛" },
-    { woord: "koek", plaatje: "🍪" },
-    { woord: "kaas", plaatje: "🧀" },
-    { woord: "ei", plaatje: "🥚" }
-  ],
-
-  klas: [
-    { woord: "stoel", plaatje: "🪑" },
-    { woord: "deur", plaatje: "🚪" },
-    { woord: "raam", plaatje: "🪟" },
-    { woord: "wc", plaatje: "🚽" },
-    { woord: "tafel", plaatje: "🟫" },
-    { woord: "kast", plaatje: "🗄️" },
-    { woord: "kring", plaatje: "⭕" },
-    { woord: "bord", plaatje: "⬜" }
-  ],
-
-  basis: [
-    { woord: "hulp", plaatje: "🙋" },
-    { woord: "stop", plaatje: "🛑" },
-    { woord: "goed", plaatje: "👍" },
-    { woord: "klaar", plaatje: "✅" },
-    { woord: "ja", plaatje: "🙂" },
-    { woord: "nee", plaatje: "🙁" },
-    { woord: "pijn", plaatje: "🤕" },
-    { woord: "spelen", plaatje: "🧸" }
-  ]
-};
-
-const themaNamen = {
-  school: "School",
-  dieren: "Dieren",
-  eten: "Eten",
-  klas: "Klas",
-  basis: "Basiswoorden"
-};
-
-let woorden = [];
 let huidigWoord = null;
 let goed = 0;
 let totaal = 0;
 let magAntwoorden = true;
 
-function startThema(thema) {
-  woorden = themas[thema];
-
-  goed = 0;
-  totaal = 0;
-  updateScore();
-
-  document.getElementById("themaTitel").textContent = themaNamen[thema];
-  document.getElementById("menuScherm").classList.add("verborgen");
+function startApp() {
+  document.getElementById("startScherm").classList.add("verborgen");
   document.getElementById("spelScherm").classList.remove("verborgen");
-
   nieuweVraag();
-}
-
-function terugNaarMenu() {
-  window.speechSynthesis.cancel();
-
-  document.getElementById("spelScherm").classList.add("verborgen");
-  document.getElementById("menuScherm").classList.remove("verborgen");
 }
 
 function nieuweVraag() {
@@ -309,8 +229,13 @@ function nieuweVraag() {
   opties.forEach(optie => {
     const knop = document.createElement("button");
     knop.className = "plaatjeKnop";
-    knop.textContent = optie.plaatje;
     knop.onclick = () => controleer(knop, optie);
+
+    const img = document.createElement("img");
+    img.src = optie.afbeelding;
+    img.alt = optie.woord;
+
+    knop.appendChild(img);
     optiesDiv.appendChild(knop);
   });
 
@@ -325,18 +250,14 @@ function controleer(knop, gekozen) {
   if (gekozen.woord === huidigWoord.woord) {
     goed++;
     magAntwoorden = false;
-
     knop.classList.add("goed");
     document.getElementById("feedback").textContent = "Goed!";
-
     spreekTekst("goed");
     updateScore();
-
     setTimeout(nieuweVraag, 1200);
   } else {
     knop.classList.add("fout");
     document.getElementById("feedback").textContent = "Probeer nog een keer";
-
     spreekTekst("probeer nog een keer");
     updateScore();
   }
@@ -362,6 +283,12 @@ function spreekTekst(tekst) {
 
 function updateScore() {
   document.getElementById("score").textContent = "Goed: " + goed + " van " + totaal;
+}
+
+function resetScore() {
+  goed = 0;
+  totaal = 0;
+  updateScore();
 }
 </script>
 
